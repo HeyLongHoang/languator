@@ -1,40 +1,26 @@
-DataType = {
-    'IMAGE': 0,
-    'VIDEO': 1
-}
+import socket
 
-OptionsColor = {
-    'NONE': 0,
-    'RGB': 1,
-    'GRAYSCALE': 2,
-    'HSV': 3,
-    'CMY': 4,
+Operation = {
+    'MT': '0',
+    'GEC': '1',
+    'DISCONNECT': '2'
 }
-OptionsFlip = {
-    'NONE': 0,
-    'HORIZONTAL': 1,
-    'VERTICAL': 2
-}
-OptionsCrop = {
-    'NONE': 0,
-    '4:3': 1,
-    '16:9': 2,
-    'SQUARE': 3
-}
-
 Status = {
     'SUCCESS': 0,
     'FAILED': 1
 }
 
-HOST_IP = '::0'
-HOST_PORT = 5555
-
 BUFFER_SIZE = 4089
 DELIMITER = '.'
 
-IMAGE_FOLDER = 'E:\\Documents\\NetworkProgramming\\ServerImaginator\\data'
-GENERATED_VIDEO = 'E:\\Documents\\NetworkProgramming\\ServerImaginator\\files\\ProcessedVideo.mp4'
-ORIGINAL_VIDEO = 'E:\\Documents\\NetworkProgramming\\ServerImaginator\\files\\ReceivedVideo.mp4'
-GENERATED_IMAGE = 'E:\\Documents\\NetworkProgramming\\ServerImaginator\\files\\ProcessedImage.png'
-ORIGINAL_IMAGE = 'E:\\Documents\\NetworkProgramming\\ServerImaginator\\files\\ReceivedImage.png'
+INPUT_PATH = '/home/aiotlab3/RISE/YTrang/Server-Python-Imaginator/input/'
+OUTPUT_PATH = '/home/aiotlab3/RISE/YTrang/Server-Python-Imaginator/output/'
+TRANSLATION_MODEL_PATH = '/home/aiotlab3/RISE/YTrang/AttentionNMT/run/luong/luong_attn_step_40000.pt'
+
+LEN_PAD = 10
+SIGNAL_PAD = 2
+HEADER_BUFFER = LEN_PAD + SIGNAL_PAD
+
+PORT = 5051
+SERVER = socket.gethostbyname(socket.gethostname())
+FORMAT = 'utf-8'
