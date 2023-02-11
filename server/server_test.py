@@ -14,6 +14,7 @@ gec_model = torch.load(server_core.GEC_MODEL_PATH)
 import server_core
 #import communicator
 
+os.system("mkdir input output")
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((server_core.SERVER_IP,server_core.SERVER_PORT))
 server.listen()
@@ -105,21 +106,3 @@ def handleClient():
             client.close()
 
 handleClient()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
