@@ -1,4 +1,4 @@
-import core
+primport core
 import socket, os
 import numpy as np
 
@@ -27,5 +27,5 @@ def handleClient():
             client.close()
         
         
-os.system(f"onmt_translate -model {core.MODEL_PATH} -src {core.INPUT_PATH} -output {core.OUTPUT_PATH}")
+os.system(f"onmt_translate -model {core.MODEL_PATH} -src {os.getcwd() + core.INPUT_PATH} -output {os.getcwd() + core.OUTPUT_PATH}")
 #handleClient()
