@@ -3,15 +3,15 @@ import socket
 import os
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.bind((core.SERVER,core.PORT))
+server.bind((core.SERVER_IP,core.PORT))
 server.listen()
-print("Server listening on " + core.SERVER)
+print("Server listening on " + core.SERVER_IP)
 
 def receiveMessage(conn, addr):
 	try:
 		header_rcv = conn.recv(core.HEADER_BUFFER).decode(core.FORMAT)
 		print("Received header: " + header_rcv)
-			# Receive header information
+		# Receive header information
 		msg_len = int(header_rcv[:core.LEN_PAD])
 		signal = int(header_rcv[core.LEN_PAD:core.HEADER_BUFFER])
 			
@@ -54,10 +54,11 @@ def sendMessage(conn, addr):
 		return None
 
 def handleClient():
-    while True: 
+    while True:
         client, addr = server.accept()
         print(f"Connected with {str(addr)}.")
-            try:
+        while True:
+            try:	
                 signal = communicator.receiveMessage(client, addr[-1])
                 if signal == core.Operation['MT']:
                     continue

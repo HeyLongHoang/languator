@@ -5,7 +5,7 @@ class Client():
     def __init__(self, server_IP, server_port):
         self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-        self.srv_IP = '103.216.223.204'
+        self.srv_IP = server_IP
         self.srv_port = server_port
         self.srv_addr = (self.srv_IP, self.srv_port)
 
@@ -61,4 +61,4 @@ class Client():
             signal = -1
             print("Received from server: " + self.receive_message())
 
-cl = Client(core.SERVER, core.PORT)
+cl = Client(core.SERVER_IP, core.PORT)

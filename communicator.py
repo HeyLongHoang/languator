@@ -17,8 +17,7 @@ def receiveMessage(conn, addr):
 		# Write sentences into input file 
 		file = open(os.getcwd() + core.INPUT_PATH + str(addr),'a')
 		for x in nltk.tokenize.sent_tokenize(msg):
-			file.write(x)
-			file.write('\n')
+			file.write(x + '\n')
 		file.close()
 		print("Finished writing input.")
 		return int(signal)
