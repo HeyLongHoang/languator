@@ -23,7 +23,7 @@ class Client():
         try:
             msg_len = len(msg.encode(core.FORMAT))
 
-            header = f'{len(msg):<{core.LEN_PAD}}'
+            header = f'{msg_len:<{core.LEN_PAD}}'
             header += f'{signal:<{core.SIGNAL_PAD}}'
 
             self.client.send(header.encode(core.FORMAT))
@@ -45,7 +45,7 @@ class Client():
             return None
     
     def handle_server(self):
-        signal = -1
+        signal = '-1'
         while True:
             # input signal
             while signal not in core.Operation.values():
@@ -58,6 +58,6 @@ class Client():
             # input string
             msg = input("Enter message: ")
             self.send_message(msg, signal)
-            signal = -1
+            signal = '-1'
             print("Received from server: " + self.receive_message())
 
