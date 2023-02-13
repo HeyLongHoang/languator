@@ -50,7 +50,7 @@ class Client():
             # input signal
             while signal not in core.Operation.values():
                 print("Enter mode (0 - translation, 1 - correction, 2 - disconnect): ")
-                signal = int(input())
+                signal = input()
             if signal == core.Operation['DISCONNECT']:
                 self.client.close()
                 break
@@ -61,4 +61,4 @@ class Client():
             signal = -1
             print("Received from server: " + self.receive_message())
 
-cl = Client(core.SERVER_IP, core.PORT)
+#cl = Client(core.SERVER_IP, core.PORT)

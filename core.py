@@ -1,9 +1,9 @@
 import socket
 
 Operation = {
-    'MT': 0,
-    'GEC': 1,
-    'DISCONNECT': 2
+    'MT': '0',
+    'GEC': '1',
+    'DISCONNECT': '2'
 }
 Status = {
     'SUCCESS': 0,
@@ -15,8 +15,8 @@ DELIMITER = '.'
 
 INPUT_PATH = '/input/'
 OUTPUT_PATH = '/output/'
-TRANSLATION_MODEL_PATH = '/home/aiotlab3/RISE/YTrang/AttentionNMT/run/rnn/avg_attn_step_80000.pt'
-GEC_MODEL_PATH = ''
+TRANSLATION_MODEL_PATH = '/home/aiotlab3/RISE/YTrang/Languator/model/translation_model.pt'
+GEC_MODEL_PATH = '/home/aiotlab3/RISE/YTrang/Languator/model/gec_model.pt'
 
 LEN_PAD = 10
 SIGNAL_PAD = 2

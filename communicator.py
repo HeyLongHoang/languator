@@ -3,10 +3,13 @@ import os
 import nltk.tokenize
 
 def receiveMessage(conn, addr):
-	try:
+	try: 
 		header_rcv = conn.recv(core.HEADER_BUFFER).decode(core.FORMAT)
-		print("Received header: " + header_rcv)
-			# Receive header information
+		if header_rcv:
+			print("Received header: " + header_rcv)
+		else:
+			return None
+		# Receive header information
 		msg_len = int(header_rcv[:core.LEN_PAD])
 		signal = int(header_rcv[core.LEN_PAD:core.HEADER_BUFFER])
 			
@@ -23,7 +26,7 @@ def receiveMessage(conn, addr):
 		return int(signal)
 	except Exception as e:
 		print(e)
-		return 
+		return None
 
 def sendMessage(conn, addr):	
 	try:
