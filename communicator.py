@@ -11,7 +11,7 @@ def receiveMessage(conn, addr):
 			return None
 		# Receive header information
 		msg_len = int(header_rcv[:core.LEN_PAD])
-		signal = int(header_rcv[core.LEN_PAD:core.HEADER_BUFFER])
+		signal = int(header_rcv[core.LEN_PAD:core.HEADER_BUFFER]) # get integer value
 			
 		# Receive input string
 		msg = conn.recv(msg_len).decode(core.FORMAT)
@@ -23,7 +23,7 @@ def receiveMessage(conn, addr):
 			file.write(x + '\n')
 		file.close()
 		print("Finished writing input.")
-		return int(signal)
+		return str(signal) # cast to become string value
 	except Exception as e:
 		print(e)
 		return None
