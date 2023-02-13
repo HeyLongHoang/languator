@@ -3,7 +3,7 @@ import core
 
 class Client():
     def __init__(self, server_IP, server_port):
-        self.client = socket.socket(socket.AF_INET socket.SOCK_STREAM)
+        self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         self.srv_IP = server_IP
         self.srv_port = server_port
@@ -50,7 +50,7 @@ class Client():
             # input signal
             while signal not in core.Operation.values():
                 print("Enter mode (0 - translation, 1 - correction, 2 - disconnect): ")
-                signal = int(input())
+                signal = input()
             if signal == core.Operation['DISCONNECT']:
                 self.client.close()
                 break
