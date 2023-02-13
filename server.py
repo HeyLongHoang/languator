@@ -1,5 +1,6 @@
 import core, communicator
 import socket
+import threading
 import os
 import torch
 from happytransformer import TTSettings
@@ -12,13 +13,8 @@ server.bind((core.SERVER_IP,core.PORT))
 server.listen()
 print("Server listening on " + core.SERVER_IP)
 
-
-def handleClient():
-    while True: 
-        client, addr = server.accept()
-        print(f"Connected with {str(addr)}.")
-        
-        while True:
+def doServerStuff(client, addr):
+    while True:
             try:
                 signal = communicator.receiveMessage(client, addr[-1])
                 if signal == core.Operation['MT']:
@@ -29,7 +25,8 @@ def handleClient():
                     input_file = open(os.getcwd() + core.INPUT_PATH + str(addr[-1]),'r')
                     output_file = open(os.getcwd() + core.OUTPUT_PATH + str(addr[-1]),'a')
                     # For each sentence in the input file
-                    for sentence in input_file.read().replace('\n', ' '):
+                    for sentence in input_file.readlines():
+                        sentence = sentence.replace('\n','')
                         # Get output from model
                         input = "grammar: " + sentence
                         output = gec_model.generate_text(input, args).text
@@ -45,5 +42,13 @@ def handleClient():
                 print(f"Error. Closing connection with {str(addr)}.")
                 client.close()
                 break
+
+def handleClient():
+    while True: 
+        client, addr = server.accept()
+        print(f"Connected with {str(addr)}.")
+
+        thread = threading.Thread(target=doServerStuff, args=(client,addr))
+        thread.start()
 
 handleClient()
