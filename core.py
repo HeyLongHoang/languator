@@ -46,8 +46,10 @@ DELIMITER = '.'
 INPUT_PATH = '/input/'
 OUTPUT_PATH = '/output/'
 EN_DE_TRANSLATION_MODEL_PATH = '/Users/longhoang/Downloads/translation_model_release.pt'
-EN_VI_TRANSLATION_MODEL_PATH = '/Users/longhoang/Downloads/translation_model_envi_release.pt'
-GEC_MODEL_PATH = '/Users/longhoang/Developer/Python/ML/DL_projects/GEC/gec_model.pt'
+EN_VI_TRANSLATION_MODEL_PATH = '/home/aiotlab3/RISE/YTrang/Languator/model/translation_model_envi_release.pt'
+GEC_MODEL_PATH = '/home/aiotlab3/RISE/YTrang/Languator/model/gec_model.pt'
+SUBWORD_MODEL = 'model/source.model'
+DESUBWORD_MODEL = 'model/target.model'
 
 LEN_PAD = 10
 SIGNAL_PAD = 2

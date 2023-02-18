@@ -1,4 +1,4 @@
-import core, communicator
+import core, communicator, subword
 import socket
 import threading
 import os
@@ -48,9 +48,11 @@ def translate(lang1, lang2, addr):
         os.system(f"onmt_translate -model {core.EN_DE_TRANSLATION_MODEL_PATH} -src {os.getcwd() + core.INPUT_PATH + str(addr)} -output {os.getcwd() + core.OUTPUT_PATH + str(addr)}")
     elif lang1 == core.LANG_STOI['en'] and lang2 == core.LANG_STOI['vi']:
         os.environ['MKL_THREADING_LAYER'] = 'GNU'
+        subword.subword(core.SUBWORD_MODEL, os.getcwd() + core.INPUT_PATH + str(addr))
         os.system(f"onmt_translate -model {core.EN_VI_TRANSLATION_MODEL_PATH} -src {os.getcwd() + core.INPUT_PATH + str(addr)} -output {os.getcwd() + core.OUTPUT_PATH + str(addr)}")
+        subword.desubword(core.DESUBWORD_MODEL, os.getcwd() + core.OUTPUT_PATH + str(addr))
     else:
-        return
+        return None
 
 def handleClient():
     while True: 
