@@ -23,16 +23,22 @@ LANG_ITOS = {
 LANG_LABEL_SIZE = len(list(LANG_STOI.values())[0]) 
 # size of encoded language value e.g '0' has size 1
 
-SUPPORT_TRANS = (
-    ('en', 'de'),
-    ('en', 'vi')
-)
-
-LANG_CONNECT = {
+"""This dictionary shows which languages that server supports in translation.
+   Add a new item 'lang_label': 'lang_fullname' into this dictionary if a new language is supported.
+   """
+SUPPORTED_LANGS = {
     'en': 'English',
     'de': 'German',
     'vi': 'Vietnamese'
 }
+
+"""This tuple shows which [source language - target language] pairs that server supports in translation.
+   Add a new ('source_lang', 'target_lang') into this tuple if a new pair is supported.
+   """
+SUPPORTED_TRANS = (
+    ('en', 'de'),
+    ('en', 'vi')
+)
 
 BUFFER_SIZE = 4089
 DELIMITER = '.'
