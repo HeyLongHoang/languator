@@ -10,7 +10,6 @@ class Client():
         self.srv_addr = (self.srv_IP, self.srv_port)
 
         self.connect()
-        self.handle_server()
     
     '''Function to make connection with server'''
     def connect(self):
@@ -19,12 +18,16 @@ class Client():
         except Exception as e:
             print(e)
 
-    def send_message(self, msg, signal):
+    def send_message(self, msg, signal, lang1, lang2):
+        '''
+        lang1, lang2 - string of integer e.g: '0', '1', ...
+        '''
         try:
             msg_len = len(msg.encode(core.FORMAT))
 
             header = f'{msg_len:<{core.LEN_PAD}}'
             header += f'{signal:<{core.SIGNAL_PAD}}'
+            header += f'{lang1 + lang2:<{core.TRANS_PAD}}'
 
             self.client.send(header.encode(core.FORMAT))
             self.client.send(msg.encode(core.FORMAT))
@@ -43,21 +46,4 @@ class Client():
         except Exception as e:
             print(e)
             return None
-    
-    def handle_server(self):
-        signal = '-1'
-        while True:
-            # input signal
-            while signal not in core.Operation.values():
-                print("Enter mode (0 - translation, 1 - correction, 2 - disconnect): ")
-                signal = input()
-            if signal == core.Operation['DISCONNECT']:
-                self.client.close()
-                break
-            
-            # input string
-            msg = input("Enter message: ")
-            self.send_message(msg, signal)
-            signal = '-1'
-            print("Received from server: " + self.receive_message())
 

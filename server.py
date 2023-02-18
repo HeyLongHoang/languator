@@ -16,10 +16,9 @@ print("Server listening on " + core.SERVER_IP)
 def doServerStuff(client, addr):
     while True:
             try:
-                signal = communicator.receiveMessage(client, addr[-1])
+                signal, lang1, lang2 = communicator.receiveMessage(client, addr[-1])
                 if signal == core.Operation['MT']:
-                    os.environ['MKL_THREADING_LAYER'] = 'GNU'
-                    os.system(f"onmt_translate -model {core.TRANSLATION_MODEL_PATH} -src {os.getcwd() + core.INPUT_PATH + str(addr[-1])} -output {os.getcwd() + core.OUTPUT_PATH + str(addr[-1])}")
+                    translate(lang1, lang2, addr[-1])
                 elif signal == core.Operation['GEC']:
                     # Open input and output file of the client
                     input_file = open(os.getcwd() + core.INPUT_PATH + str(addr[-1]),'r')
@@ -42,6 +41,16 @@ def doServerStuff(client, addr):
                 print(f"Error. Closing connection with {str(addr)}.")
                 client.close()
                 break
+
+def translate(lang1, lang2, addr):
+    if lang1 == core.LANG_STOI['en'] and lang2 == core.LANG_STOI['de']:
+        os.environ['MKL_THREADING_LAYER'] = 'GNU'
+        os.system(f"onmt_translate -model {core.EN_DE_TRANSLATION_MODEL_PATH} -src {os.getcwd() + core.INPUT_PATH + str(addr)} -output {os.getcwd() + core.OUTPUT_PATH + str(addr)}")
+    elif lang1 == core.LANG_STOI['en'] and lang2 == core.LANG_STOI['vi']:
+        os.environ['MKL_THREADING_LAYER'] = 'GNU'
+        os.system(f"onmt_translate -model {core.EN_VI_TRANSLATION_MODEL_PATH} -src {os.getcwd() + core.INPUT_PATH + str(addr)} -output {os.getcwd() + core.OUTPUT_PATH + str(addr)}")
+    else:
+        return
 
 def handleClient():
     while True: 

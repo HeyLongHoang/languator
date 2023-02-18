@@ -10,8 +10,7 @@ def receiveMessage(conn, addr):
 		else:
 			return None
 		# Receive header information
-		msg_len = int(header_rcv[:core.LEN_PAD])
-		signal = int(header_rcv[core.LEN_PAD:core.HEADER_BUFFER]) # get integer value
+		msg_len, signal, lang1, lang2 = process_header(header_rcv)
 			
 		# Receive input string
 		msg = conn.recv(msg_len).decode(core.FORMAT)
@@ -23,10 +22,24 @@ def receiveMessage(conn, addr):
 			file.write(x + '\n')
 		file.close()
 		print("Finished writing input.")
-		return str(signal) # cast to become string value
+		
+		return str(signal), lang1, lang2
 	except Exception as e:
 		print(e)
 		return None
+	
+def process_header(header):
+	'''
+	Returns:
+	msg_len -- int, length of message
+	signal -- int, task value, 0 for MT, 1 for GEC
+	lang1, lang2 -- integer of type string for MT, space string for GEC
+	'''
+	msg_len = int(header[:core.LEN_PAD])
+	signal = int(header[core.LEN_PAD : core.LEN_PAD + core.SIGNAL_PAD]) # get integer value
+	langs = header[core.LEN_PAD + core.SIGNAL_PAD : core.HEADER_BUFFER]
+	lang1, lang2 = langs[:core.LANG_LABEL_SIZE], langs[core.LANG_LABEL_SIZE : 2 * core.LANG_LABEL_SIZE]
+	return msg_len, signal, lang1, lang2
 
 def sendMessage(conn, addr):	
 	try:
