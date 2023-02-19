@@ -45,11 +45,13 @@ DELIMITER = '.'
 
 INPUT_PATH = '/input/'
 OUTPUT_PATH = '/output/'
-EN_DE_TRANSLATION_MODEL_PATH = '/Users/longhoang/Downloads/translation_model_release.pt'
-EN_VI_TRANSLATION_MODEL_PATH = '/home/aiotlab3/RISE/YTrang/Languator/model/translation_model_envi_release.pt'
-GEC_MODEL_PATH = '/home/aiotlab3/RISE/YTrang/Languator/model/gec_model.pt'
-SUBWORD_MODEL = 'model/source.model'
-DESUBWORD_MODEL = 'model/target.model'
+EN_DE_TRANSLATION_MODEL_PATH = '/model/translation_model_ende_release.pt'
+EN_VI_TRANSLATION_MODEL_PATH = '/model/translation_model_envi_release.pt'
+GEC_MODEL_PATH = '/model/gec_model.pt'
+EN_VI_SUBWORD_MODEL = '/model/en_vi.source.model'
+EN_VI_DESUBWORD_MODEL = '/model/en_vi.target.model'
+EN_DE_SUBWORD_MODEL = '/model/en_de.source.model'
+EN_DE_DESUBWORD_MODEL = '/model/en_de.target.model'
 
 LEN_PAD = 10
 SIGNAL_PAD = 2

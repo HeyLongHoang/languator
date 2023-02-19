@@ -6,7 +6,7 @@ import torch
 from happytransformer import TTSettings
 
 args = TTSettings(num_beams=5, min_length=1)
-gec_model = torch.load(core.GEC_MODEL_PATH)
+gec_model = torch.load(os.getcwd() + core.GEC_MODEL_PATH)
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((core.SERVER_IP,core.PORT))
@@ -45,12 +45,14 @@ def doServerStuff(client, addr):
 def translate(lang1, lang2, addr):
     if lang1 == core.LANG_STOI['en'] and lang2 == core.LANG_STOI['de']:
         os.environ['MKL_THREADING_LAYER'] = 'GNU'
-        os.system(f"onmt_translate -model {core.EN_DE_TRANSLATION_MODEL_PATH} -src {os.getcwd() + core.INPUT_PATH + str(addr)} -output {os.getcwd() + core.OUTPUT_PATH + str(addr)}")
+        subword.subword(os.getcwd() + core.EN_DE_SUBWORD_MODEL, os.getcwd() + core.INPUT_PATH + str(addr))
+        os.system(f"onmt_translate -model {os.getcwd() + core.EN_DE_TRANSLATION_MODEL_PATH} -src {os.getcwd() + core.INPUT_PATH + str(addr)} -output {os.getcwd() + core.OUTPUT_PATH + str(addr)}")
+        subword.desubword(os.getcwd() + core.EN_DE_DESUBWORD_MODEL, os.getcwd() + core.OUTPUT_PATH + str(addr))
     elif lang1 == core.LANG_STOI['en'] and lang2 == core.LANG_STOI['vi']:
         os.environ['MKL_THREADING_LAYER'] = 'GNU'
-        subword.subword(core.SUBWORD_MODEL, os.getcwd() + core.INPUT_PATH + str(addr))
-        os.system(f"onmt_translate -model {core.EN_VI_TRANSLATION_MODEL_PATH} -src {os.getcwd() + core.INPUT_PATH + str(addr)} -output {os.getcwd() + core.OUTPUT_PATH + str(addr)}")
-        subword.desubword(core.DESUBWORD_MODEL, os.getcwd() + core.OUTPUT_PATH + str(addr))
+        subword.subword(os.getcwd() + core.EN_VI_SUBWORD_MODEL, os.getcwd() + core.INPUT_PATH + str(addr))
+        os.system(f"onmt_translate -model {os.getcwd() + core.EN_VI_TRANSLATION_MODEL_PATH} -src {os.getcwd() + core.INPUT_PATH + str(addr)} -output {os.getcwd() + core.OUTPUT_PATH + str(addr)}")
+        subword.desubword(os.getcwd() + core.EN_VI_DESUBWORD_MODEL, os.getcwd() + core.OUTPUT_PATH + str(addr))
     else:
         return None
 

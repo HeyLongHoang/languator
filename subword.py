@@ -2,10 +2,6 @@ import sys
 import sentencepiece as spm
 
 def subword(source_model, source_raw):
-
-    print("Source Model:", source_model)
-    print("Source Dataset:", source_raw)
-
     sp = spm.SentencePieceProcessor()
     sp.load(source_model)
 
@@ -24,7 +20,6 @@ def subword(source_model, source_raw):
     print("Done subwording the source file for ", source_raw)
 
 def desubword(target_model, target_raw):
-
     sp = spm.SentencePieceProcessor()
     sp.load(target_model)
 

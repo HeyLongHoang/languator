@@ -1,6 +1,7 @@
 import core, communicator
 import socket
 import os
+import nltk
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((core.SERVER_IP,core.PORT))
