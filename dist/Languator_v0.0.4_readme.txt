@@ -1,0 +1,20 @@
+Languator_v0.0.4
+Portable version for Ubuntu
+Size: 152.8 MB
+
+Download link:
+https://drive.google.com/file/d/1g0VM8SJwbJZGms5EaTrrlMzNhaDazM-o/view?usp=sharing
+
+Checksum of compressed (.zip) file:
+MD5:   c031e347f79cc81986f65788de64d3bb
+SHA1:  8ba13c0dceaca975cb15f7f5174cf0dc953414b7
+
+Checksum of binary (.run) file:
+MD5:   12bf901b25343873ecd86a181aa2b0c0
+SHA1:  cc51b2a436ef05f0439bc07ce95a3c7a8b46b230
+
+More information: https://github.com/HeyLongHoang/languator/
+This program comes with absolutely no warranty.
+See the GNU General Public License, version 2 or later for details.
+
+
