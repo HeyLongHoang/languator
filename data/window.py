@@ -39,7 +39,7 @@ class MainWindow(Gtk.ApplicationWindow):
 
         # Set default dark theme for the program
         self.settings = Gtk.Settings.get_default()
-        self.current_theme = 1
+        self.current_theme = 0
         self.dark_theme = True
         self.settings.set_property('gtk-theme-name', THEMES[0][True])
 
