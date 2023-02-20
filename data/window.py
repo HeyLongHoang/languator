@@ -41,7 +41,7 @@ class MainWindow(Gtk.ApplicationWindow):
         self.settings = Gtk.Settings.get_default()
         self.current_theme = 1
         self.dark_theme = True
-        self.settings.set_property('gtk-theme-name', THEMES[1][True])
+        self.settings.set_property('gtk-theme-name', THEMES[0][True])
 
         # Create a grid to arrange the widgets
         grid = Gtk.Grid()
@@ -763,10 +763,10 @@ class MainWindow(Gtk.ApplicationWindow):
         rm_errs_noti   = ' >/dev/null 2>&1'
         
         for curr_prog_name in POSSIBLE_NAMES:
-            os.system('python3 ' + curr_prog_name + '.py'   + rm_errs_noti + run_in_bg + rm_errs_noti)
-            os.system('./'       + curr_prog_name           + rm_errs_noti + run_in_bg + rm_errs_noti)
-            os.system('./'       + curr_prog_name + '.bin ' + rm_errs_noti + run_in_bg + rm_errs_noti)
-            os.system('./'       + curr_prog_name + '.run ' + rm_errs_noti + run_in_bg + rm_errs_noti)
+            os.system('python3 ' + curr_prog_name + '.py'  + rm_errs_noti + run_in_bg + rm_errs_noti)
+            os.system('./'       + curr_prog_name          + rm_errs_noti + run_in_bg + rm_errs_noti)
+            os.system('./'       + curr_prog_name + '.bin' + rm_errs_noti + run_in_bg + rm_errs_noti)
+            os.system('./'       + curr_prog_name + '.run' + rm_errs_noti + run_in_bg + rm_errs_noti)
         # updating ...
 
     """Feature: Show Shortcuts window"""
@@ -803,4 +803,3 @@ class MainWindow(Gtk.ApplicationWindow):
         about_dialog.set_transient_for(self)
         about_dialog.run()
         about_dialog.destroy()
-
