@@ -1,0 +1,30 @@
+Languator_v0.5.2
+Portable version for Ubuntu
+Size: 124.5 MB
+
+Download links:
++ Adwaita-style (blue theme) version:
+    https://drive.google.com/file/d/1rJ65EAK-jFhIC4elEYQfoXiRTGz4F4i-/view?usp=sharing
+
+    Checksum of compressed (.zip) file:
+        MD5:   5f0b5d8f0a141441fd764635c005542f
+        SHA1:  290df40ddad6c462e9d36ed5748d6c51c6e8d19a
+
+    Checksum of binary (.run) file:
+        MD5:   8056c02d22c7770fde06c7e7e4247658
+        SHA1:  cd006249879d32682131a32ee0d8d8ca45229278
+
++ Yaru-style (orange theme) version:
+    https://drive.google.com/file/d/1j7VtdJ7F5fSbxBLK-vLlo12ttqhX-Y_d/view?usp=sharing
+
+    Checksum of compressed (.zip) file:
+        MD5:   33277826852be0b2eaa62e2232c2c7cf
+        SHA1:  e87822352abd9d8ed9dbd0fcf8f2b1646b60f670
+
+    Checksum of binary (.run) file:
+        MD5:   4a9a43df660fc2af5f098f477174e174
+        SHA1:  a0fd76ac7ac07b14f8d86c87408a8d74c43fdbbb
+
+More information: https://github.com/HeyLongHoang/languator/
+This program comes with absolutely no warranty.
+See the GNU General Public License, version 2 or later for details.
