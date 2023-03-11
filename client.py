@@ -63,7 +63,7 @@ class Client():
             return None
 
     def reconnect(self):
-        # Todo
+        #TODO: reconnect if an error occurs
         pass
 
     def handle_server(self):
@@ -78,7 +78,7 @@ class Client():
                 self.client.close()
                 break
 
-            # input string
+            # Input string
             msg = input('Enter message: ')
             self.send_message(msg, signal)
             signal = '-1'
