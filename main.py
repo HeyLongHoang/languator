@@ -75,7 +75,7 @@ class LanguatorApplication(Gtk.Application):
 
     def handle_input(self, input_str, source_lang_label, target_lang_label):
         """ Main function of program to handle input and show output data.
-        Called from 'on_button_clicked()' when user clicks the 'Translate/Grammer Check' button.
+        Called from 'on_button_clicked()' when user clicks the 'Translate/Grammar Check' button.
         """
         signal = str(self.mode-1)
         source_lang_no = core.LANG_STOI[source_lang_label]
