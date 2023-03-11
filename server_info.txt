@@ -1,0 +1,7 @@
+IPv4
+5555
+local
+
+# The first line is the IP generation of server: IPv4 or IPv6
+# The second line is the opening port of server.
+# The third line is the IP address of server: 'local' or an IPv4/IPv6 address
